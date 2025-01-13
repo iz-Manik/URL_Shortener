@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { redirect } = require('react-router-dom');
 const Schema = new mongoose.Schema({
     shortID: {
         type:String,
@@ -9,11 +8,6 @@ const Schema = new mongoose.Schema({
     redirectURL:{
         type:String,
         required:true
-    },
-    clickCount:{
-        type:Number,
-        required:true,
-        default:0
     },
     visitHistory:[{ timestamp :{ type:Number} }],
 },
