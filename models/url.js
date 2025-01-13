@@ -15,7 +15,7 @@ const Schema = new mongoose.Schema({
         required:true,
         default:0
     },
-    visitHistory:[{ timestamp :{ type:number} }],
+    visitHistory:[{ timestamp :{ type:Number} }],
 },
     {timestamps:true}
 );
