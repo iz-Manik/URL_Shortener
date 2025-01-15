@@ -1,11 +1,15 @@
 const express = require('express');
 const app = express();
-const urlRouter = require('./routes/url');
 const Port = 8001;
+
 const connect = require('./connect');
 const URL = require('./models/url');
 const path = require('path');
+
+const urlRouter = require('./routes/url');
 const staticRouter = require('./routes/staticRouter');
+const userRouter = require('./routes/user');
+
 connect();
 
 app.set("view engine", "ejs");
@@ -46,6 +50,7 @@ app.get('/:shortID', async (req, res) => {
 
 app.use('/url', urlRouter);
 app.use('/', staticRouter);
+app.use('/user', userRouter);
 
 // Start the server
 app.listen(Port, () => {
