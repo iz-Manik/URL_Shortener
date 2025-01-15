@@ -8,9 +8,9 @@ router.get('/',async(req,res)=>{
 }
 );
 
-router.get("/signup",(req,res)=>{
-    console.log('Signup route hit');
-    return res.render('signup');
+router.get('/signup', (req, res) => {
+    console.log('Signup route was accessed');
+    return res.render('signup'); // Ensure the signup view file exists
 });
 
 module.exports=router;

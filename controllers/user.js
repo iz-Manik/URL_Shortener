@@ -6,4 +6,4 @@ async function handleUserSignup(req, res) {
   return res.render("home");
 }
 
-module.exports = { handleUserSignup };s
+module.exports = { handleUserSignup };

@@ -18,6 +18,13 @@ app.set('views',path.resolve("./views"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use('/', staticRouter);
+// Ensure no middleware or other routes are interfering with /signup. For example, if another route
+// (like a catch-all /:shortID) is intercepting the request:
+
+app.use('/url', urlRouter);
+app.use('/user', userRouter);
+
 // Test route to display all URLs
 app.get('/test', async (req, res) => {
   try {
@@ -47,10 +54,6 @@ app.get('/:shortID', async (req, res) => {
     res.status(500).send('Error redirecting URL');
   }
 });
-
-app.use('/url', urlRouter);
-app.use('/', staticRouter);
-app.use('/user', userRouter);
 
 // Start the server
 app.listen(Port, () => {
