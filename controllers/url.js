@@ -9,7 +9,7 @@ async function handleGenerateNewShortURL(req,res){
         return res.status(400).json({error:'URL is required'});
     }
     const short=shortid.generate();
-    await URL.create({shortID:short,redirectURL:req.body.url,visitedHistory:[]});
+    await URL.create({shortID:short,redirectURL:req.body.url,visitedHistory:[],createdBy:req.user.id});
     return res.render('home',{id:short});
 }
 

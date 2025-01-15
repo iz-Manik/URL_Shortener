@@ -13,7 +13,7 @@
 <body>
     <h1>URL Shortener</h1>
     <% if (locals.id) { %>
-        <p>URL Generated: <a href="/url/<%= locals.id %>">http://localhost:8001/url/<%= locals.id %></a></p>
+        <p>URL Generated: <a href="/url/<%= locals.id %>">http://localhost:8001/<%= locals.id %></a></p>
     <% } %>
     <div>
         <form method="POST" action="/url">

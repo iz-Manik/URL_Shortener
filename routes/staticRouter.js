@@ -3,7 +3,10 @@ const router=express.Router();
 const URL=require('../models/url');
 
 router.get('/',async(req,res)=>{
-    const allurls=await URL.find({});
+    if(!req.user){
+        return res.redirect('/login');
+    }
+    const allurls=await URL.find({createdBy:req.user.id});
     return res.render('home',{urls:allurls});
 }
 );
@@ -11,6 +14,11 @@ router.get('/',async(req,res)=>{
 router.get('/signup', (req, res) => {
     console.log('Signup route was accessed');
     return res.render('signup'); // Ensure the signup view file exists
+});
+
+router.get('/login', (req, res) => {
+    console.log('Signup route was accessed');
+    return res.render('login'); // Ensure the signup view file exists
 });
 
 module.exports=router;
