@@ -12,12 +12,10 @@ router.get('/',async(req,res)=>{
 );
 
 router.get('/signup', (req, res) => {
-    console.log('Signup route was accessed');
     return res.render('signup'); // Ensure the signup view file exists
 });
 
 router.get('/login', (req, res) => {
-    console.log('Signup route was accessed');
     return res.render('login'); // Ensure the signup view file exists
 });
 

@@ -19,22 +19,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.use('/', staticRouter);
+app.use('/', checkAuth , staticRouter);
 // Ensure no middleware or other routes are interfering with /signup. For example, if another route
 // (like a catch-all /:shortID) is intercepting the request:
 
 app.use('/url', restrictToLoggedinUserOnly , urlRouter);
-app.use('/user', checkAuth , userRouter);
-
-// Test route to display all URLs
-app.get('/test', async (req, res) => {
-  try {
-    const allURLs = await URL.find({});
-    res.render('home',{urls:allURLs});
-  } catch (err) {
-    res.status(500).send('Error retrieving URLs');
-  }
-});
+app.use('/user' , userRouter);
 
 // Route to handle short URL redirection
 app.get('/:shortID', async (req, res) => {
